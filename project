@@ -31,8 +31,4 @@ print("Your message is successfully encrypted")
 print("Enter your key to revial your message")
 x=input("")
 x=bytes(x,'utf-8')
-if k==x:
-  print(decryptMessage(message_secret))
-else:
-print('sorry')
-
+print(decryptMessage(message_secret))
