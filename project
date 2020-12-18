@@ -1,0 +1,38 @@
+from cryptography.fernet import Fernet
+def genratePassKey():
+    key = Fernet.generate_key()
+    print(key)
+    abc = open("PasswordKey.key",'wb')
+    abc.write(key)
+    abc.close()
+    
+def getContentFromUser():
+    return input("Enter the Content you want to Encrypt in your python Script")
+    
+def getMyKey():
+    abc = open("PasswordKey.key",'rb')
+    return abc.read()
+def encryptMessage(message_normal):
+    key = getMyKey()
+    k = Fernet(key)
+    encrypted_Message = k.encrypt(message_normal)
+    return encrypted_Message
+def decryptMessage(message_secret):
+    key = getMyKey()
+    k = Fernet(key)
+    decrypted_Message = k.decrypt(message_secret)
+    return decrypted_Message
+print('WELCOME TO SAI CRYPTOFRAPHY')
+print('the process are \n1.Key will be generated \n2. Enter your message to encrypt\n 3.Enter key to reveal it')
+genratePassKey()
+message_normal=getContentFromUser()
+message_secret=encryptMessage(bytes(message_normal,'utf-8'))
+print("Your message is successfully encrypted")
+print("Enter your key to revial your message")
+x=input("")
+x=bytes(x,'utf-8')
+if k==x:
+  print(decryptMessage(message_secret))
+else:
+print('sorry')
+
